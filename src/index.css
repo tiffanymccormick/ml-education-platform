@@ -1,0 +1,688 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&family=DIN+Condensed:wght@400;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core colors */
+    --background: 210 15% 6%;
+    --foreground: 0 0% 98%;
+    
+    /* Mecha-inspired color palette */
+    --eva-purple: 273 100% 36%;    /* NERV purple - #5900B3 */
+    --eva-red: 358 100% 50%;       /* Warning red - #FF0012 */
+    --eva-orange: 22 100% 50%;     /* Alert orange - #FF5E00 */
+    --eva-green: 120 100% 25%;     /* Terminal green - #007F00 */
+    --eva-blue: 195 100% 50%;      /* Interface blue - #00C3FF */
+    --eva-yellow: 49 100% 50%;     /* Caution yellow - #FFC700 */
+    --eva-white: 0 0% 95%;         /* Display white - #F2F2F2 */
+    
+    /* UI Colors */
+    --primary: var(--eva-purple);
+    --primary-foreground: 0 0% 98%;
+    --secondary: var(--eva-orange);
+    --secondary-foreground: 240 10% 3%;
+    --muted: 210 15% 20%;
+    --muted-foreground: 240 5% 65%;
+    --accent: var(--eva-red);
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 15% 15%;
+    --input: 210 15% 15%;
+    --ring: var(--eva-purple);
+    --radius: 0px;
+  }
+
+  .dark {
+    --background: 210 15% 6%;
+    --foreground: 0 0% 98%;
+    --card: 210 15% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 210 15% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: var(--eva-purple);
+    --primary-foreground: 0 0% 98%;
+    --secondary: var(--eva-orange);
+    --secondary-foreground: 240 10% 3%;
+    --muted: 210 15% 20%;
+    --muted-foreground: 240 5% 65%;
+    --accent: var(--eva-red);
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 15% 15%;
+    --input: 210 15% 15%;
+    --ring: var(--eva-purple);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+  h2 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+  h3 {
+    @apply text-xl md:text-2xl font-medium;
+  }
+  button, .button {
+    @apply transition-all duration-300;
+  }
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #0c1419;
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+@font-face {
+  font-family: 'Cyberspace';
+  src: url('/fonts/CyberspaceRacewayRegular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-cyber {
+  font-family: 'Cyberspace', 'Orbitron', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.font-display {
+  font-family: 'DIN Condensed', 'Syne', sans-serif;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  letter-spacing: -0.03em;
+}
+
+.text-glow {
+  text-shadow: 
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 30px currentColor;
+}
+
+.text-glow-sm {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor;
+}
+
+.text-glow-lg {
+  text-shadow: 
+    0 0 20px currentColor,
+    0 0 40px currentColor,
+    0 0 60px currentColor,
+    0 0 80px currentColor;
+}
+
+.text-shadow-neon {
+  text-shadow:
+    0 0 7px currentColor,
+    0 0 10px currentColor,
+    0 0 21px currentColor,
+    0 0 42px currentColor,
+    0 0 82px currentColor;
+}
+
+.mecha-border {
+  position: relative;
+  border: 1px solid currentColor;
+  background-clip: padding-box;
+  overflow: hidden;
+}
+
+.mecha-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -1px;
+  background: currentColor;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mecha-border:hover::before {
+  opacity: 0.5;
+}
+
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    hsl(var(--eva-blue)) 0%,
+    hsl(var(--eva-purple)) 50%,
+    hsl(var(--eva-red)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.gradient-text-mecha {
+  background: linear-gradient(
+    to right,
+    hsl(var(--eva-blue)) 0%,
+    hsl(var(--eva-green)) 50%,
+    hsl(var(--eva-blue)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    hsl(var(--primary)),
+    hsl(var(--secondary)),
+    hsl(var(--accent))
+  );
+  z-index: -1;
+  animation: border-animation 4s linear infinite;
+}
+
+@keyframes border-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Enhanced button hover effects */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 
+    0 0 20px currentColor,
+    0 0 40px currentColor;
+  transform: translateY(-2px);
+}
+
+.hover-scale {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Enhanced grid background */
+.grid-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Enhanced grid background similar to Raad.com */
+.raad-grid-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Add small grid markers at intersections */
+.raad-grid-background::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: 0 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Particle background */
+.particle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float-random 15s infinite linear;
+}
+
+@keyframes float-random {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, 10px);
+  }
+  50% {
+    transform: translate(0, 20px);
+  }
+  75% {
+    transform: translate(-10px, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Enhanced kinetic typography */
+.glitch-text {
+  position: relative;
+  animation: glitch 3s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip: rect(0, 0, 0, 0);
+  animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -1px 0 hsl(var(--eva-blue));
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: 1px 0 hsl(var(--eva-red));
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(20px, 9999px, 21px, 0);
+  }
+  20% {
+    clip: rect(42px, 9999px, 78px, 0);
+  }
+  40% {
+    clip: rect(15px, 9999px, 33px, 0);
+  }
+  60% {
+    clip: rect(89px, 9999px, 91px, 0);
+  }
+  80% {
+    clip: rect(25px, 9999px, 99px, 0);
+  }
+  100% {
+    clip: rect(12px, 9999px, 135px, 0);
+  }
+}
+
+/* Enhanced card glow effect */
+.card-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    hsla(var(--eva-purple), 0.15) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transform: translate(-100%, -100%) rotate(45deg);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+  transform: translate(0, 0) rotate(45deg);
+}
+
+/* Enhanced scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
+
+/* Swiss layout utilities */
+.grid-swiss {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+}
+
+.container-swiss {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Tech noir dividers */
+.divider-h {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+.divider-v {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+/* Mecha card effect */
+.card-mecha {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(12, 20, 25, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.card-mecha::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-mecha:hover::before {
+  opacity: 1;
+}
+
+/* Mecha UI elements */
+.mecha-panel {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(12, 20, 25, 0.8);
+  padding: 1rem;
+}
+
+.mecha-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    hsl(var(--eva-blue)),
+    hsl(var(--eva-purple))
+  );
+}
+
+.mecha-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+}
+
+.mecha-panel-title {
+  font-family: 'DIN Condensed', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 1.25rem;
+  color: hsl(var(--eva-white));
+}
+
+.mecha-label {
+  position: relative;
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: hsl(var(--eva-white));
+}
+
+.mecha-label::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 6px;
+  height: 6px;
+  background: hsl(var(--eva-red));
+}
+
+.mecha-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: hsl(var(--eva-white));
+  font-family: 'DIN Condensed', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.mecha-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: hsl(var(--eva-purple));
+}
+
+.mecha-button::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 8px;
+  height: 8px;
+  background: hsl(var(--eva-purple));
+}
+
+.mecha-button::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 8px;
+  height: 8px;
+  background: hsl(var(--eva-purple));
+}
+
+/* Scanline effect */
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.05) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* Caution stripes */
+.caution-stripes {
+  background: repeating-linear-gradient(
+    45deg,
+    hsl(var(--eva-yellow)),
+    hsl(var(--eva-yellow)) 10px,
+    hsl(var(--eva-black)) 10px,
+    hsl(var(--eva-black)) 20px
+  );
+}
+
+/* Terminal text */
+.terminal-text {
+  font-family: 'JetBrains Mono', monospace;
+  color: hsl(var(--eva-green));
+  text-shadow: 0 0 5px hsl(var(--eva-green));
+} 

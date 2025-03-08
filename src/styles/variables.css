@@ -1,0 +1,29 @@
+:root {
+  /* Light theme */
+  --bg-primary: rgba(255, 255, 255, 0.95);
+  --bg-secondary: #f4f4f5;
+  --text-primary: #18181b;
+  --text-secondary: #71717a;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --border: #e4e4e7;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Typography */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+[data-theme="dark"] {
+  --bg-primary: rgba(24, 24, 27, 0.95);
+  --bg-secondary: #27272a;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --border: #3f3f46;
+} 

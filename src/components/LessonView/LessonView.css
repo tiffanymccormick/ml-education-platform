@@ -1,0 +1,61 @@
+.lesson-view {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--bg-secondary);
+  padding: 2rem;
+}
+
+.lesson-view__controls {
+  padding: 1rem;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border);
+}
+
+.mode-toggle {
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode-toggle.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.lesson-view__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  height: calc(100vh - 4rem);
+}
+
+.lesson-view__editor,
+.lesson-view__visualization {
+  background: var(--bg-primary);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.lesson-view__guide {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-primary);
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  transform: translateY(70%);
+  transition: transform 0.3s ease;
+}
+
+.lesson-view__guide:hover {
+  transform: translateY(0);
+} 
